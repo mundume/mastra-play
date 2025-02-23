@@ -2,13 +2,26 @@
 
 import { createThread } from "@/actions/create-resource-id";
 import { useChat } from "@ai-sdk/react";
+import { AiMessageType } from "@mastra/core";
 import { useAction } from "next-safe-action/hooks";
 
-export default function Chat({ resourceId }: { resourceId: string }) {
+export default function Chat({
+  resourceId,
+  threadId,
+  initialMessages,
+}: {
+  resourceId: string;
+  threadId: string;
+  initialMessages: Array<
+    AiMessageType & { role: Exclude<AiMessageType["role"], "data"> }
+  >;
+}) {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     body: {
       resourceId,
+      threadId,
     },
+    initialMessages,
   });
 
   const { execute, isPending, isExecuting } = useAction(createThread);

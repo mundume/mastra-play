@@ -1,4 +1,5 @@
 import Chat from "@/components/custom/chat";
+import Init from "@/components/init";
 import { cookies } from "next/headers";
 
 export default async function Home() {
@@ -6,7 +7,7 @@ export default async function Home() {
 
   return (
     <div>
-      <Chat resourceId={resourceId!} />
+      <Init resourceId={resourceId!} />
     </div>
   );
 }
