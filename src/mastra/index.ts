@@ -3,4 +3,6 @@ import { myAgent } from "./agents";
 
 export const mastra = new Mastra({
   agents: { myAgent },
+  // @ts-expect-error
+  memory,
 });
